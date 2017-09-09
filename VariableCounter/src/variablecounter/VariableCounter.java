@@ -82,13 +82,15 @@ public class VariableCounter {
     {
         int objects = 0;
         StringBuffer all_objects = new StringBuffer();
+        String k = s.toString();
+        k = k.replace("="," ");
+        s = new StringBuffer(k);
         while(s.indexOf(" new ")>0)
         {
-            String k = s.toString();
             k = k.trim().replaceAll(" +", " "); //Replaces more than one space with just a single one.
             String tokens[] = k.split(" ");
             int pos = Arrays.asList(tokens).indexOf("new");
-            all_objects.append(tokens[pos-2].concat(","));
+            all_objects.append(tokens[pos-1].concat(","));
             s.replace(s.indexOf(" new "),s.indexOf(" new ")+3," ");
             objects++;
         }
