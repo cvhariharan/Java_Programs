@@ -45,17 +45,15 @@ public class Shop {
                String item_name = sc.next();
                System.out.println("Cost per unit: ");
                double rate = sc.nextDouble();
-               System.out.println("Category: ");
-               String category = sc.next();
-               Items item = new Items(item_name,category,rate);
                Categories.printAllCategories();
                System.out.println("Category ID: ");
-               int cat_id = sc.nextInt();
-               catelog.add(item, cat_id-1);
+               int category = sc.nextInt();
+               Items item = new Items(item_name,category-1,rate);
+               catelog.add(item, category-1);
                break;
                
-               case 2: Bill bill = new Bill();
-               bill.generate();
+               /*case 2: Bill bill = new Bill();
+               bill.generate(customer.basket,customer.quantities);*/
            }
            }           
        }

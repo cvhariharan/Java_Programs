@@ -17,12 +17,12 @@ public class Bill {
      * @param args the command line arguments
      */
    
-    public void Bill(ArrayList basket, ArrayList quantities)
+    public void Bill(ArrayList<Items> basket, ArrayList quantities)
     {
         
     }
     
-    public void generate()
+    public void generate(ArrayList<Items> basket, ArrayList quantities)
     {
         
     }
