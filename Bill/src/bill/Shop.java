@@ -32,11 +32,15 @@ public class Shop {
         }
        if(isOwner)
        {
-           System.out.println("1.Add items 2.Generate Bill: ");
-           int todo = sc.nextInt();
+           Categories catelog = new Categories();
+           int todo = 1;
+           while(todo!=0)
+           {
+               System.out.println("0.Exit 1.Add items 2.Generate Bill: ");
+               todo = sc.nextInt();
            switch(todo)
            {
-               case 1: Categories catelog = new Categories();
+               case 1: 
                System.out.println("Item name: ");
                String item_name = sc.next();
                System.out.println("Cost per unit: ");
@@ -47,13 +51,13 @@ public class Shop {
                Categories.printAllCategories();
                System.out.println("Category ID: ");
                int cat_id = sc.nextInt();
-               catelog.add(item, cat_id);
+               catelog.add(item, cat_id-1);
                break;
                
                case 2: Bill bill = new Bill();
                bill.generate();
            }
-                   
+           }           
        }
      }
     }
@@ -81,10 +85,11 @@ public class Shop {
             {
                 in = sc.nextInt();
                 ArrayList<Items> items = Categories.categories.get(in-1);
-                    int i=0;
+                    int i=1;
                     for(Items item: items)
                     {
                         System.out.println(i+"."+item.name);
+                        i++;
                     }
                     customer.addToBasket(in-1);
                 
