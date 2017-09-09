@@ -17,12 +17,12 @@ public class Bill {
      * @param args the command line arguments
      */
    
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Customer customer = new Customer();
+    public void Bill(ArrayList basket, ArrayList quantities)
+    {
+        
     }
     
-    public void Bill(ArrayList basket, ArrayList quantities)
+    public void generate()
     {
         
     }
