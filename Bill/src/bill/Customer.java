@@ -37,8 +37,13 @@ public class Customer {
     }
     public void showBasket()
     {
+        int i = 0;
         for(Items each_item: basket)
-            System.out.println(each_item.name);     
+        {
+            System.out.print(quantities.get(i));
+            System.out.println(each_item.name);   
+            i++;
+        }
     }
     public void checkout()
     {
