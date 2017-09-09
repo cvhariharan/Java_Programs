@@ -52,7 +52,7 @@ public class VariableCounter {
         {
             lines[i] = lines[i].trim();
             //String all_words[] = lines[i].split(" ");
-            if(!lines[i].contains("int") && !lines[i].contains("String") && !lines[i].contains("float") && !lines[i].contains("double") && !lines[i].contains("char"))
+            if(!lines[i].contains("int ") /*&& !lines[i].contains("String ")*/ && !lines[i].contains("float ") && !lines[i].contains("double ") && !lines[i].contains("char "))
             {
             } else {
                 String variables[] = lines[i].split(",");
@@ -63,7 +63,7 @@ public class VariableCounter {
                     if(variables[j].contains("="))
                         variables[j] = variables[j].split("=")[0].trim();
                     variables[j] = variables[j].replace("new","");
-                    variables[j] = variables[j].replace("String","");
+                    //variables[j] = variables[j].replace("String","");
                     variables[j] = variables[j].replace("float","");
                     variables[j] = variables[j].replace("double","");
                     variables[j] = variables[j].replace("int","");
