@@ -83,7 +83,10 @@ public class Shop {
             int in=0;
             do
             {
+                System.out.println("Select (Type 666 to exit and return to the previous option): ");
                 in = sc.nextInt();
+                if(in != 666)
+                {
                 ArrayList<Items> items = Categories.categories.get(in-1);
                     int i=1;
                     for(Items item: items)
@@ -92,7 +95,8 @@ public class Shop {
                         i++;
                     }
                     customer.addToBasket(in-1);
-                
+                }
             }while(in!=666);
+            customer.showBasket();
     }
 }

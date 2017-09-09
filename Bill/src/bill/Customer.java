@@ -13,7 +13,7 @@ import java.util.*;
 public class Customer {
     static int all_customers;
     int cust_id;
-    ArrayList basket = new ArrayList();
+    ArrayList<Items> basket = new ArrayList<Items>();
     ArrayList quantities = new ArrayList();
     Customer()
     {
@@ -30,16 +30,15 @@ public class Customer {
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         ArrayList<Items> items = Categories.categories.get(cat_id);
-        basket.add(items.get(choice));
+        basket.add(items.get(choice-1));
         System.out.println("Quantities: ");
         int quantity = sc.nextInt();
         quantities.add(quantity);
     }
     public void showBasket()
     {
-        String all_items = basket.toString();
-        String quan = quantities.toString();
-        System.out.println(all_items+"\n"+quan);
+        for(Items each_item: basket)
+            System.out.println(each_item.name);     
     }
     public void checkout()
     {
