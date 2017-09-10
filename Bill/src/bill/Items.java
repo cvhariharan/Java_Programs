@@ -11,7 +11,7 @@ package bill;
  * @author thero
  */
 public class Items {
-   String[] cate_names = {"Grains","Pulses","Snacks","Toiletries"};
+   
    public String name; //Name of the item
    public double cost; //This is the cost per unit
    public String category;
@@ -23,7 +23,7 @@ public class Items {
        this.name = name;
        this.cost = cost;
        this.category_id = cat_id;
-       this.category = cate_names[cat_id];
+       this.category = Categories.cate_names.get(cat_id);
        total_items++;
        itemid += total_items+10;
    }

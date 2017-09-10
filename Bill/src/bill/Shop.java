@@ -35,9 +35,9 @@ public class Shop {
        {
            Categories catelog = new Categories();
            int todo = 1;
-           while(todo!=2)
+           while(todo!=3)
            {
-               System.out.println("0.Adjust GST rates 1.Add Items 2.Exit");
+               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Exit");
                todo = sc.nextInt();
            switch(todo)
            {
@@ -53,7 +53,8 @@ public class Shop {
                catelog.add(item, category-1);
                break;
                
-               case 2: break;
+               case 2: Categories.addNewCategory();
+               case 3: break;
                
                case 0: Categories cate = new Categories();
                cate.adjustGST();
@@ -96,7 +97,7 @@ public class Shop {
                     int i=1;
                     for(Items item: items)
                     {
-                        System.out.println(i+"."+item.name+" "+"GST: "+Categories.gst_rates[item.category_id]+"%");
+                        System.out.println(i+"."+item.name+" "+"GST: "+(double)Categories.gst_rates.get(item.category_id)+"%");
                         i++;
                     }
                     customer.addToBasket(in-1);

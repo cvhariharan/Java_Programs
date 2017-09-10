@@ -30,7 +30,7 @@ public class Bill {
             int quantity = (int)quantities.get(i);
             i++;
             double temp_bill = item.cost * quantity;
-            double gst = temp_bill*(Categories.gst_rates[item.category_id])/100;
+            double gst = temp_bill*((double)Categories.gst_rates.get(item.category_id))/100;
             double cgst = gst/2;
             double sgst = cgst;
             double temp_bill_gst = temp_bill+gst;
