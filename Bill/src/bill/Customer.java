@@ -13,8 +13,10 @@ import java.util.*;
 public class Customer {
     static int all_customers;
     int cust_id;
+    double total;
     ArrayList<Items> basket = new ArrayList<Items>();
     ArrayList quantities = new ArrayList();
+    static ArrayList<Customer> customers_list = new ArrayList<Customer>();
     Customer()
     {
         all_customers++;
@@ -56,7 +58,19 @@ public class Customer {
     }
     public void checkout()
     {
+        
        Bill bill = new Bill();
-       bill.generate(basket,quantities);
+       bill.generate(basket,quantities,this);
+    }
+    
+    public static void printCustomerLogs()
+    {
+        System.out.println();
+        for(Customer customer: customers_list)
+        {
+            System.out.println("Customer ID: "+customer.cust_id);
+            customer.showBasket();
+            System.out.println("Total: "+customer.total);
+        }
     }
 }

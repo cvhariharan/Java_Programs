@@ -22,7 +22,7 @@ public class Bill {
         
     }
     
-    public void generate(ArrayList<Items> basket, ArrayList quantities)
+    public void generate(ArrayList<Items> basket, ArrayList quantities,Customer customer)
     {
         int i=0;
         for(Items item: basket)
@@ -38,6 +38,7 @@ public class Bill {
             System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
         }
         System.out.println("Total Bill: "+total_bill);
+        customer.total = total_bill;
     }
     
 }

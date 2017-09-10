@@ -17,12 +17,13 @@ public class Shop {
         Scanner sc = new Scanner(System.in);
         Shop shop = new Shop();
         while(true){
-        System.out.println("1.Customer 2.Owner");
+        System.out.println("1.Customer 2.Owner (Defualt username: Owner and Password: Password) All choices are done using the number indicated before the choices.");
         int choice = sc.nextInt();
         boolean isOwner = false;
         switch(choice)
         {
             case 1: Customer customer = new Customer();
+            Customer.customers_list.add(customer); //customers_list stores data of all the customers
             shop.caterToCustomer(customer);
             break;
             
@@ -37,7 +38,7 @@ public class Shop {
            int todo = 1;
            while(todo!=3)
            {
-               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Exit");
+               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Exit 4.Customer Logs");
                todo = sc.nextInt();
            switch(todo)
            {
@@ -54,7 +55,12 @@ public class Shop {
                break;
                
                case 2: Categories.addNewCategory();
+               break;
+               
                case 3: break;
+               
+               case 4: Customer.printCustomerLogs();
+               break;
                
                case 0: Categories cate = new Categories();
                cate.adjustGST();
