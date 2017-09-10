@@ -91,12 +91,13 @@ public class Shop {
                     int i=1;
                     for(Items item: items)
                     {
-                        System.out.println(i+"."+item.name);
+                        System.out.println(i+"."+item.name+" "+"GST: "+Categories.gst_rates[item.category_id]+"%");
                         i++;
                     }
                     customer.addToBasket(in-1);
                 }
             }while(in!=666);
+            System.out.println("Estimated cost: ");
             customer.showBasket();
             System.out.println("Do you want to checkout? Y/N");
             String isDone = sc.next().toLowerCase();

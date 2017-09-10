@@ -41,12 +41,17 @@ public class Customer {
     }
     public void showBasket()
     {
-        int i = 0;
-        for(Items each_item: basket)
+        int i=0;
+        for(Items item: basket)
         {
-            System.out.print(quantities.get(i));
-            System.out.println(each_item.name);   
+            int quantity = (int)quantities.get(i);
             i++;
+            double temp_bill = item.cost * quantity;
+            double gst = temp_bill*(Categories.gst_rates[item.category_id])/100;
+            double cgst = gst/2;
+            double sgst = cgst;
+            double temp_bill_gst = temp_bill+gst;
+            System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
         }
     }
     public void checkout()
