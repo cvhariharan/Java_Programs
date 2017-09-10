@@ -53,6 +53,28 @@ public class Categories {
             i++;
         }
     }
+    
+    public void adjustGST()
+    {
+        int in=1;
+        Scanner sc = new Scanner(System.in);
+        do
+        {
+            printAllCategories();
+            System.out.println("Input Category Id to change its GST rate (Enter 0 to exit): ");
+            in = sc.nextInt();
+            if(in!=0)
+            {
+                in--;
+                if(in>=0 && in < gst_rates.length)
+                {
+                    System.out.println("Old GST Rate: "+gst_rates[in]+" Enter new GST Rate: ");
+                    double new_gst = sc.nextDouble();
+                    gst_rates[in] = new_gst;
+                }
+            }
+        }while(in != 0);
+    }
    /* public static void printCatelogue()
     {
         int i=1;

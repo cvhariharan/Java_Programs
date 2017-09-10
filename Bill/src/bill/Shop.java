@@ -37,10 +37,11 @@ public class Shop {
            int todo = 1;
            while(todo!=2)
            {
-               System.out.println("1.Add Items 2.Exit");
+               System.out.println("0.Adjust GST rates 1.Add Items 2.Exit");
                todo = sc.nextInt();
-           if(todo == 1)
+           switch(todo)
            {
+               case 1:
                System.out.println("Item name: ");
                String item_name = sc.next();
                System.out.println("Cost per unit: ");
@@ -50,12 +51,16 @@ public class Shop {
                int category = sc.nextInt();
                Items item = new Items(item_name,category-1,rate);
                catelog.add(item, category-1);
+               break;
                
+               case 2: break;
+               
+               case 0: Categories cate = new Categories();
+               cate.adjustGST();
                /*case 2: Bill bill = new Bill();
                bill.generate(customer.basket,customer.quantities);*/
            }
-           else if(todo == 2)
-               break;
+           
            }           
        }
      }
