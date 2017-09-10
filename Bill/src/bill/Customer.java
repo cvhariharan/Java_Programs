@@ -29,10 +29,11 @@ public class Customer {
     {
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
+        choice--;
         if(choice >= 0 && choice < Categories.categories.get(cat_id).size())
         {
         ArrayList<Items> items = Categories.categories.get(cat_id);
-        basket.add(items.get(choice-1));
+        basket.add(items.get(choice));
         System.out.println("Quantities: ");
         int quantity = sc.nextInt();
         quantities.add(quantity);

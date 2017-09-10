@@ -22,7 +22,8 @@ public class Shop {
         boolean isOwner = false;
         switch(choice)
         {
-            case 1: shop.caterToCustomer();
+            case 1: Customer customer = new Customer();
+            shop.caterToCustomer(customer);
             break;
             
             case 2: isOwner = shop.auth();
@@ -34,13 +35,12 @@ public class Shop {
        {
            Categories catelog = new Categories();
            int todo = 1;
-           while(todo!=0)
+           while(todo!=2)
            {
-               System.out.println("0.Exit 1.Add items 2.Generate Bill: ");
+               System.out.println("1.Add Items 2.Exit");
                todo = sc.nextInt();
-           switch(todo)
+           if(todo == 1)
            {
-               case 1: 
                System.out.println("Item name: ");
                String item_name = sc.next();
                System.out.println("Cost per unit: ");
@@ -50,11 +50,12 @@ public class Shop {
                int category = sc.nextInt();
                Items item = new Items(item_name,category-1,rate);
                catelog.add(item, category-1);
-               break;
                
                /*case 2: Bill bill = new Bill();
                bill.generate(customer.basket,customer.quantities);*/
            }
+           else if(todo == 2)
+               break;
            }           
        }
      }
@@ -71,16 +72,17 @@ public class Shop {
         String pass = sc.next();
         return username.equals(user)&&password.equals(pass);
     }
-    public void caterToCustomer()
+    public void caterToCustomer(Customer customer)
     {
         Scanner sc = new Scanner(System.in);
-        Customer customer = new Customer();
+        //Customer customer = new Customer();
         System.out.println("Hello! Customer Id: "+customer.cust_id);
         System.out.println();
-            Categories.printAllCategories();
+            //Categories.printAllCategories();
             int in=0;
             do
             {
+                Categories.printAllCategories();
                 System.out.println("Select (Type 666 to exit and return to the previous option): ");
                 in = sc.nextInt();
                 if(in != 666)
@@ -96,5 +98,11 @@ public class Shop {
                 }
             }while(in!=666);
             customer.showBasket();
+            System.out.println("Do you want to checkout? Y/N");
+            String isDone = sc.next().toLowerCase();
+            if(isDone.equals("y"))
+                customer.checkout();
+            else
+                caterToCustomer(customer);
     }
 }
