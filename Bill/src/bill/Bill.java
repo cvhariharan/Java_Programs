@@ -35,7 +35,7 @@ public class Bill {
             double sgst = cgst;
             double temp_bill_gst = temp_bill+gst;
             total_bill += temp_bill_gst;
-            System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: "+cgst+"% +"+" sgst: "+sgst+"% = "+temp_bill_gst);
+            System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
         }
         System.out.println("Total Bill: "+total_bill);
     }
