@@ -23,12 +23,13 @@ public class Shop {
         switch(choice)
         {
             case 1: 
-            System.out.println("1.Existing Customer 2.New Customer");
+            System.out.println("1.Existing Customer 2.New Customer 3.Exit");
             int existing = sc.nextInt();
             if(existing == 1)
             {
                 System.out.println("Enter Customer ID: ");
-                int cust_id = sc.nextInt();
+                String id = sc.next();
+                int cust_id = Customer.parseCustId(id);
                 if(cust_id >=0 && cust_id < Customer.customers_list.size())
                 {
                 Customer customer = Customer.customers_list.get(cust_id);
@@ -43,7 +44,7 @@ public class Shop {
                 else
                     System.out.println("Invalid Customer ID!");
             }
-            else
+            else if(existing == 2)
             {
             System.out.println("Enter your name: ");
             String name = sc.next();
@@ -53,6 +54,7 @@ public class Shop {
             Customer.customers_list.add(customer); //customers_list stores data of all the customers
             shop.caterToCustomer(customer);
             }
+            else
             break;
             
             case 2: isOwner = shop.auth();
@@ -116,7 +118,7 @@ public class Shop {
     {
         Scanner sc = new Scanner(System.in);
         //Customer customer = new Customer();
-        System.out.println("Hello! "+customer.name+ " "+"Customer ID: "+customer.cust_id);
+        System.out.println("Hello! "+customer.name+ " "+"Customer ID: "+customer.fancyCustId());
         System.out.println();
             //Categories.printAllCategories();
             int in=0;

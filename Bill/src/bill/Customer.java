@@ -104,4 +104,16 @@ public class Customer {
             System.out.println();
         }
     }
+    public String fancyCustId()
+    {
+        String fancyId = "C"+cust_id;
+        return fancyId;
+    }
+    
+    public static int parseCustId(String id)
+    {
+        String temp = id.replace("C","");
+        int parsed_id = Integer.parseInt(temp);
+        return parsed_id;
+    }
 }

@@ -5,6 +5,7 @@
  */
 package bill;
 import java.util.*;
+import java.math.*;
 /**
  *
  * @author thero
@@ -39,6 +40,7 @@ public class Bill {
             System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
             statements.add(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
         }
+        total_bill = Math.ceil(total_bill);
         System.out.println("Total Bill: "+total_bill);
         customer.total = total_bill;
         return this;
