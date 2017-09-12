@@ -17,7 +17,7 @@ public class Shop {
         Scanner sc = new Scanner(System.in);
         Shop shop = new Shop();
         while(true){
-        System.out.println("1.Customer 2.Owner (Defualt username: Owner and Password: Password) All choices are done using the number indicated before the choices.");
+        System.out.println("1.Customer 2.Owner (Default username: Owner and Password: Password) All choices are done using the number indicated before the choices.");
         int choice = sc.nextInt();
         boolean isOwner = false;
         switch(choice)
