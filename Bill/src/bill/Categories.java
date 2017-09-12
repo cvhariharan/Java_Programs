@@ -59,6 +59,16 @@ public class Categories {
         //categories.add(cat_id,temp);
         return true;
     }
+    public static void printAllItems(int cat_id)
+    {
+        ArrayList<Items> items = Categories.categories.get(cat_id);
+        int i=1;
+        for(Items item: items)
+        {
+            System.out.println(i+"."+item.name+" "+"GST: "+(double)Categories.gst_rates.get(item.category_id)+"%"+" Price: Rs."+item.cost);
+            i++;
+         }
+    }
     public static void printAllCategories()
     {
         int i=1;
@@ -112,5 +122,31 @@ public class Categories {
             categories.add(new ArrayList<Items>());
             i++;
         }
+    }
+    
+    public static void deleteItem(int cat_id, int item_id)
+    {
+        if(cat_id >= 0 && cat_id < categories.size())
+        {
+            if(item_id >= 0 && item_id < categories.get(cat_id).size())
+            {
+                categories.get(cat_id).remove(item_id);
+            }
+            else
+                System.out.println("Invalid item id!");
+        }
+        else
+            System.out.println("Inavlid category id!");
+    }
+    
+    public static void deleteCategory(int cat_id)
+    {
+         if(cat_id >= 0 && cat_id < categories.size())
+        {
+            categories.remove(cat_id);
+            cate_names.remove(cat_id);
+        }
+        else
+            System.out.println("Inavlid category id!");
     }
 }

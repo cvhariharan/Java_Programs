@@ -66,9 +66,9 @@ public class Shop {
        {
            Categories catelog = new Categories();
            int todo = 1;
-           while(todo!=3)
+           while(todo!=6)
            {
-               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Exit 4.Customer Logs");
+               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Customer Logs 4.Delete Item 5.Delete Category 6.Exit");
                todo = sc.nextInt();
            switch(todo)
            {
@@ -88,12 +88,27 @@ public class Shop {
                
                case 2: Categories.addNewCategory();
                break;
-               
-               case 3: break;
-               
-               case 4: Customer.printCustomerLogs();
+              
+               case 3: Customer.printCustomerLogs();
                break;
                
+               case 4: Categories.printAllCategories();  //Delete Item case
+               System.out.println("Category ID: ");
+               int cat_id = sc.nextInt();
+               Categories.printAllItems(cat_id-1);
+               System.out.println("Item ID: ");
+               int item_id = sc.nextInt();
+               Categories.deleteItem(cat_id-1, item_id-1);
+               break;
+               
+               case 5: Categories.printAllCategories();  //Delete category case
+               System.out.println("Category ID: ");
+               int cate_id = sc.nextInt();
+               Categories.deleteCategory(cate_id-1);
+               break;
+               
+               case 6:
+                   break;
                case 0: Categories cate = new Categories();
                cate.adjustGST();
                /*case 2: Bill bill = new Bill();
@@ -128,16 +143,10 @@ public class Shop {
             {
                 Categories.printAllCategories();
                 System.out.println("Select (Type 666 to exit and return to the previous option): ");
-                in = sc.nextInt();
+                in = sc.nextInt(); //This is the category Id
                 if(in != 666)
                 {
-                ArrayList<Items> items = Categories.categories.get(in-1);
-                    int i=1;
-                    for(Items item: items)
-                    {
-                        System.out.println(i+"."+item.name+" "+"GST: "+(double)Categories.gst_rates.get(item.category_id)+"%");
-                        i++;
-                    }
+                    Categories.printAllItems(in-1);
                     customer.addToBasket(in-1);
                 }
             }while(in!=666);
