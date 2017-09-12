@@ -22,9 +22,37 @@ public class Shop {
         boolean isOwner = false;
         switch(choice)
         {
-            case 1: Customer customer = new Customer();
+            case 1: 
+            System.out.println("1.Existing Customer 2.New Customer");
+            int existing = sc.nextInt();
+            if(existing == 1)
+            {
+                System.out.println("Enter Customer ID: ");
+                int cust_id = sc.nextInt();
+                if(cust_id >=0 && cust_id < Customer.customers_list.size())
+                {
+                Customer customer = Customer.customers_list.get(cust_id);
+                System.out.println("1.Show Purchase History 2.Buy more items");
+                int cust_choice = sc.nextInt();
+                if(cust_choice == 1)
+                    customer.showHistory();
+                else
+                    shop.caterToCustomer(customer);
+                
+                }
+                else
+                    System.out.println("Invalid Customer ID!");
+            }
+            else
+            {
+            System.out.println("Enter your name: ");
+            String name = sc.next();
+            System.out.println("Enter your phone number: ");
+            long phone_no = sc.nextLong();
+            Customer customer = new Customer(name,phone_no);
             Customer.customers_list.add(customer); //customers_list stores data of all the customers
             shop.caterToCustomer(customer);
+            }
             break;
             
             case 2: isOwner = shop.auth();
@@ -44,7 +72,7 @@ public class Shop {
            {
                case 1:
                System.out.println("Item name: ");
-               String item_name = sc.next();
+               String item_name = sc.next(); //Use BufferedReader
                System.out.println("Cost per unit: ");
                double rate = sc.nextDouble();
                Categories.printAllCategories();
@@ -88,7 +116,7 @@ public class Shop {
     {
         Scanner sc = new Scanner(System.in);
         //Customer customer = new Customer();
-        System.out.println("Hello! Customer Id: "+customer.cust_id);
+        System.out.println("Hello! "+customer.name+ " "+"Customer ID: "+customer.cust_id);
         System.out.println();
             //Categories.printAllCategories();
             int in=0;

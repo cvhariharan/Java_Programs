@@ -33,18 +33,26 @@ public class Categories {
         cate_names.add("Pulses");
         cate_names.add("Snacks");
         cate_names.add("Toiletries");
+        
         gst_rates.add(12.0);
         gst_rates.add(14.0);
         gst_rates.add(6.0);
         gst_rates.add(8.0);
         int i = 0;
         initializeArrayList();
+        categories.get(0).add(new Items("Rice",0,45));
+        categories.get(0).add(new Items("Millets",0,23));
+        categories.get(2).add(new Items("Chips",2,20));
+        categories.get(2).add(new Items("Biscuits",2,30));
+        categories.get(3).add(new Items("Soap",0,45));
+        categories.get(3).add(new Items("Handwash",0,120));
         flag=1;
         }
     }
     public boolean add(Items item,int cat_id)
     {
-       categories.get(cat_id).add(item);
+        //if(!categories.get(cat_id).contains(item)) //Redundant, doesn't do anything
+        categories.get(cat_id).add(item);
         /*for(Items each_item: temp)
             System.out.println(each_item.name);*/
         

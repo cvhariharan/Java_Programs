@@ -14,13 +14,25 @@ public class Customer {
     static int all_customers;
     int cust_id;
     double total;
+    String name;
+    long phone_no;
     ArrayList<Items> basket = new ArrayList<Items>();
     ArrayList quantities = new ArrayList();
     static ArrayList<Customer> customers_list = new ArrayList<Customer>();
+    ArrayList<Bill> my_bills = new ArrayList<Bill>();
+    /*ArrayList<Items> purchased = new ArrayList<Items>();
+    ArrayList purchased_quantities = new ArrayList();*/
     Customer()
     {
+        cust_id = all_customers;
         all_customers++;
-        cust_id += all_customers+10;
+    }
+    Customer(String name, long phone_no)
+    {
+        this.name = name;
+        this.phone_no = phone_no;
+        cust_id = all_customers;
+        all_customers++;
     }
     public ArrayList hasPurchased()
     {
@@ -60,7 +72,10 @@ public class Customer {
     {
         
        Bill bill = new Bill();
-       bill.generate(basket,quantities,this);
+       my_bills.add(bill.generate(basket,quantities,this));
+       basket.clear();
+       quantities.clear();
+       
     }
     
     public static void printCustomerLogs()
@@ -68,9 +83,25 @@ public class Customer {
         System.out.println();
         for(Customer customer: customers_list)
         {
-            System.out.println("Customer ID: "+customer.cust_id);
+            /*System.out.println("Customer ID: "+customer.cust_id);
             customer.showBasket();
-            System.out.println("Total: "+customer.total);
+            System.out.println("Total: "+customer.total);*/
+            System.out.println("Customer ID: "+customer.cust_id);
+            customer.showHistory();
+        }
+    }
+    
+    public void showHistory()
+    {
+        for(Bill bill: my_bills)
+        {
+            for(String each_statement : bill.statements)
+            {
+            System.out.println(each_statement);
+            
+            }
+            System.out.print("Total: "+bill.total_bill);
+            System.out.println();
         }
     }
 }

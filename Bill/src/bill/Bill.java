@@ -17,12 +17,13 @@ public class Bill {
      * @param args the command line arguments
      */
     double total_bill=0;
+    ArrayList<String> statements = new ArrayList<String>();
     public void Bill(ArrayList<Items> basket, ArrayList quantities)
     {
         
     }
     
-    public void generate(ArrayList<Items> basket, ArrayList quantities,Customer customer)
+    public Bill generate(ArrayList<Items> basket, ArrayList quantities,Customer customer)
     {
         int i=0;
         for(Items item: basket)
@@ -36,9 +37,11 @@ public class Bill {
             double temp_bill_gst = temp_bill+gst;
             total_bill += temp_bill_gst;
             System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
+            statements.add(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
         }
         System.out.println("Total Bill: "+total_bill);
         customer.total = total_bill;
+        return this;
     }
     
 }
