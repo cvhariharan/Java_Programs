@@ -17,13 +17,16 @@ public class Items {
    public String category;
    public int category_id;
    int itemid;
+   public int count = 50; //Defualt count is 50 for all items
    static int total_items = 0;
-   Items(String name,int cat_id,double cost)
+   Items(String name,int cat_id,double cost,int count)
    {
        this.name = name;
        this.cost = cost;
        this.category_id = cat_id;
        this.category = Categories.cate_names.get(cat_id);
+       if(count > 0)
+        this.count = count;
        total_items++;
        itemid += total_items+10;
    }

@@ -47,10 +47,19 @@ public class Customer {
         if(choice >= 0 && choice < Categories.categories.get(cat_id).size())
         {
         ArrayList<Items> items = Categories.categories.get(cat_id);
-        basket.add(items.get(choice));
+        Items item_to_add = items.get(choice);
+        if(item_to_add.count > 0)
+        {
+        basket.add(item_to_add);
         System.out.println("Quantities: ");
         int quantity = sc.nextInt();
+        if(quantity >= item_to_add.count && item_to_add.count != 0)
+            quantity = item_to_add.count; //If quantity is more than available count, add all the available items to the basket
         quantities.add(quantity);
+        item_to_add.count -= quantity;
+        }
+        else
+            System.out.println("Sorry! "+item_to_add.name+" is out of stock!");
     }
     }
     public void showBasket()

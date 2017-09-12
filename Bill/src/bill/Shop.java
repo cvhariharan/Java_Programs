@@ -56,7 +56,7 @@ public class Shop {
             }
             else
             break;
-            
+            break;
             case 2: isOwner = shop.auth();
             break;
             
@@ -80,7 +80,9 @@ public class Shop {
                Categories.printAllCategories();
                System.out.println("Category ID: ");
                int category = sc.nextInt();
-               Items item = new Items(item_name,category-1,rate);
+               System.out.println("Count (Enter 0 for default value of 50): ");
+               int count = sc.nextInt();
+               Items item = new Items(item_name,category-1,rate,count);
                catelog.add(item, category-1);
                break;
                
