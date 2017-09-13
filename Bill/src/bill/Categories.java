@@ -44,8 +44,8 @@ public class Categories {
         categories.get(0).add(new Items("Millets",0,23,0));
         categories.get(2).add(new Items("Chips",2,20,0));
         categories.get(2).add(new Items("Biscuits",2,30,0));
-        categories.get(3).add(new Items("Soap",0,45,0));
-        categories.get(3).add(new Items("Handwash",0,120,0));
+        categories.get(3).add(new Items("Soap",3,45,0));
+        categories.get(3).add(new Items("Handwash",3,120,0));
         flag=1;
         }
     }

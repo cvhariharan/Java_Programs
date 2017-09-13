@@ -66,15 +66,16 @@ public class Shop {
        {
            Categories catelog = new Categories();
            int todo = 1;
-           while(todo!=7)
+           while(todo!=8)
            {
-               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Customer Logs 4.Delete Item 5.Delete Category 6.Edit Item details 7.Exit");
+               System.out.println("0.Adjust GST rates \n1.Add Items \n2.Add new Category \n3.Customer Logs \n4.Delete Item \n5.Delete Category \n6.Edit Item details \n7.Print item details \n8.Exit");
                todo = sc.nextInt();
            switch(todo)
            {
-               case 1:
+               case 1: //Add items
                System.out.println("Item name: ");
-               String item_name = sc.next(); //Use BufferedReader
+               String item_name = sc.next();
+               item_name += sc.nextLine();
                System.out.println("Cost per unit: ");
                double rate = sc.nextDouble();
                Categories.printAllCategories();
@@ -115,7 +116,17 @@ public class Shop {
                int itemid = sc.nextInt();
                Categories.editItem(catid-1, itemid-1);
                    break;
-               case 7:
+                   
+               case 7: Categories.printAllCategories();
+               System.out.println("Category ID: ");
+               int cateid = sc.nextInt();
+               Categories.printAllItems(cateid-1);
+               System.out.println("Item id: ");
+               int id = sc.nextInt();
+               Items.printDetails(Categories.categories.get(cateid-1).get(id-1));
+               System.out.println();
+                   break;
+               case 8:
                    break;
                case 0: Categories cate = new Categories();
                cate.adjustGST();
@@ -143,8 +154,8 @@ public class Shop {
     {
         Scanner sc = new Scanner(System.in);
         //Customer customer = new Customer();
-        System.out.println("Hello! "+customer.name+ " "+"Customer ID: "+customer.fancyCustId());
         System.out.println();
+        System.out.println("Hello! "+customer.name+ " "+"Customer ID: "+customer.fancyCustId());
             //Categories.printAllCategories();
             int in=0;
             do
