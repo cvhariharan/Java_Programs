@@ -149,4 +149,27 @@ public class Categories {
         else
             System.out.println("Inavlid category id!");
     }
+    
+    public static void editItem(int cat_id, int item_id)
+    {
+       if(cat_id >= 0 && cat_id < categories.size())
+        {
+            if(item_id >= 0 && item_id < categories.get(cat_id).size())
+            {
+                Scanner sc = new Scanner(System.in);
+                Items item_to_edit = categories.get(cat_id).get(item_id);
+                Items.printDetails(item_to_edit);
+                System.out.println("Cost: ");
+                double new_cost = sc.nextDouble();
+                System.out.println("Count: ");
+                int new_count = sc.nextInt();
+                item_to_edit.cost = new_cost;
+                item_to_edit.count = new_count;
+            }
+            else
+                System.out.println("Invalid item id!");
+        }
+        else
+            System.out.println("Inavlid category id!");
+    }
 }

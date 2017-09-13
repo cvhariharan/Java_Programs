@@ -30,5 +30,11 @@ public class Items {
        total_items++;
        itemid += total_items+10;
    }
-   
+   public static void printDetails(Items item)
+   {
+       System.out.println("Item name: "+item.name);
+       System.out.println("Item cost: "+item.cost);
+       System.out.println("Category: "+item.category);
+       System.out.println("In stock: "+item.count);
+   }
 }

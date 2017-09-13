@@ -66,9 +66,9 @@ public class Shop {
        {
            Categories catelog = new Categories();
            int todo = 1;
-           while(todo!=6)
+           while(todo!=7)
            {
-               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Customer Logs 4.Delete Item 5.Delete Category 6.Exit");
+               System.out.println("0.Adjust GST rates 1.Add Items 2.Add new Category 3.Customer Logs 4.Delete Item 5.Delete Category 6.Edit Item details 7.Exit");
                todo = sc.nextInt();
            switch(todo)
            {
@@ -84,13 +84,13 @@ public class Shop {
                int count = sc.nextInt();
                Items item = new Items(item_name,category-1,rate,count);
                catelog.add(item, category-1);
-               break;
+                   break;
                
                case 2: Categories.addNewCategory();
-               break;
+                   break;
               
                case 3: Customer.printCustomerLogs();
-               break;
+                   break;
                
                case 4: Categories.printAllCategories();  //Delete Item case
                System.out.println("Category ID: ");
@@ -99,15 +99,23 @@ public class Shop {
                System.out.println("Item ID: ");
                int item_id = sc.nextInt();
                Categories.deleteItem(cat_id-1, item_id-1);
-               break;
+                   break;
                
                case 5: Categories.printAllCategories();  //Delete category case
                System.out.println("Category ID: ");
                int cate_id = sc.nextInt();
                Categories.deleteCategory(cate_id-1);
-               break;
+                   break;
                
-               case 6:
+               case 6: Categories.printAllCategories();
+               System.out.println("Category ID: ");
+               int catid = sc.nextInt();
+               Categories.printAllItems(catid-1);
+               System.out.println("Item id: ");
+               int itemid = sc.nextInt();
+               Categories.editItem(catid-1, itemid-1);
+                   break;
+               case 7:
                    break;
                case 0: Categories cate = new Categories();
                cate.adjustGST();
