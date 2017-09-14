@@ -171,11 +171,32 @@ public class Shop {
             }while(in!=666);
             System.out.println("Estimated cost: ");
             customer.showBasket();
-            System.out.println("Do you want to checkout? Y/N");
-            String isDone = sc.next().toLowerCase();
-            if(isDone.equals("y"))
-                customer.checkout();
-            else
-                caterToCustomer(customer);
+            int isDone = 1;
+            while(true)
+            {
+            System.out.println("1.Delete item from basket\n2.Add more items\n3.Checkout");
+            isDone = sc.nextInt();
+            switch(isDone)
+            {
+                case 1: customer.showBasket();
+                System.out.println("Enter the item id to delete that item: ");
+                int item_id = sc.nextInt();
+                customer.deleteFromBasket(item_id-1);
+                System.out.println("Modified basket: ");
+                customer.showBasket();
+                break;
+                
+                case 2: caterToCustomer(customer);
+                break;
+                
+                case 3: customer.checkout();
+                break;
+                    
+            }
+            if(isDone == 3)
+            {
+                break;
+            }
+            }
     }
 }

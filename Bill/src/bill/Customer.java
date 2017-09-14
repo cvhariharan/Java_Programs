@@ -62,6 +62,17 @@ public class Customer {
             System.out.println("Sorry! "+item_to_add.name+" is out of stock!");
     }
     }
+    public void deleteFromBasket(int item_id)
+    {
+            if(item_id >= 0 && item_id < basket.size())
+            {
+               basket.remove(item_id);
+               quantities.remove(item_id);
+            }
+            else
+                System.out.println("Invalid item id!");
+     
+    }
     public void showBasket()
     {
         int i=0;
@@ -74,7 +85,7 @@ public class Customer {
             double cgst = gst/2;
             double sgst = cgst;
             double temp_bill_gst = temp_bill+gst;
-            System.out.println(item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
+            System.out.println(i+". "+item.name+" "+"Rate: Rs."+item.cost+" X "+quantity+" "+"+"+" cgst: Rs."+cgst+" +"+" sgst: Rs."+sgst+" = "+temp_bill_gst);
         }
     }
     public void checkout()
