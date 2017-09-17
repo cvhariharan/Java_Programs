@@ -30,6 +30,10 @@ public class Items {
        total_items++;
        itemid += total_items+10;
    }
+   Items()
+   {
+       
+   }
    public static void printDetails(Items item)
    {
        System.out.println("Item name: "+item.name);

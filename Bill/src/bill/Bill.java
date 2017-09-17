@@ -19,14 +19,17 @@ public class Bill {
      */
     double total_bill=0;
     ArrayList<String> statements = new ArrayList<String>();
+    ArrayList<Items> basket;
+    ArrayList quantities;
     /*public void Bill(ArrayList<Items> basket, ArrayList quantities)
     {
         
     }*/
-    
     public Bill generate(ArrayList<Items> basket, ArrayList quantities,Customer customer)
     {
         int i=0;
+        this.basket = new ArrayList<Items>(basket);
+        this.quantities = new ArrayList(quantities);
         for(Items item: basket)
         {
             int quantity = (int)quantities.get(i);

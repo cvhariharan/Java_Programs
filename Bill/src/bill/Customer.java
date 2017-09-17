@@ -113,15 +113,26 @@ public class Customer {
     
     public void showHistory()
     {
+        int bill_id=1;
         for(Bill bill: my_bills)
         {
-            for(String each_statement : bill.statements)
+            int i = 0;
+            System.out.println("Bill ID: "+bill_id);
+            System.out.println("-----------------------------------------------------------");
+            System.out.printf("%-15s %20s %20s","Name","Quantity","Cost");
+            System.out.println();
+            System.out.println("-----------------------------------------------------------");
+            for(Items each_item : bill.basket)
             {
-            System.out.println(each_statement);
-            
+            System.out.println();
+            System.out.printf("%-15s %20d %20f",each_item.name,bill.quantities.get(i),each_item.cost*(int)bill.quantities.get(i));
+            i++;
             }
+            System.out.println();
             System.out.print("Total: "+bill.total_bill);
             System.out.println();
+            System.out.println("-----------------------------------------------------------");
+            bill_id++;
         }
     }
     public String fancyCustId()
