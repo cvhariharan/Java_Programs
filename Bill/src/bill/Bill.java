@@ -19,10 +19,10 @@ public class Bill {
      */
     double total_bill=0;
     ArrayList<String> statements = new ArrayList<String>();
-    public void Bill(ArrayList<Items> basket, ArrayList quantities)
+    /*public void Bill(ArrayList<Items> basket, ArrayList quantities)
     {
         
-    }
+    }*/
     
     public Bill generate(ArrayList<Items> basket, ArrayList quantities,Customer customer)
     {

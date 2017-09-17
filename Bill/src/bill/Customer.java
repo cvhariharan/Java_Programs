@@ -18,7 +18,7 @@ public class Customer {
     long phone_no;
     ArrayList<Items> basket = new ArrayList<Items>();
     ArrayList quantities = new ArrayList();
-    static ArrayList<Customer> customers_list = new ArrayList<Customer>();
+    //static ArrayList<Customer> customers_list = new ArrayList<Customer>();
     ArrayList<Bill> my_bills = new ArrayList<Bill>();
     /*ArrayList<Items> purchased = new ArrayList<Items>();
     ArrayList purchased_quantities = new ArrayList();*/
@@ -101,7 +101,7 @@ public class Customer {
     public static void printCustomerLogs()
     {
         System.out.println();
-        for(Customer customer: customers_list)
+        for(Customer customer: Shop.customers_list)
         {
             /*System.out.println("Customer ID: "+customer.cust_id);
             customer.showBasket();

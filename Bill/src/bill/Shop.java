@@ -10,8 +10,8 @@ import java.util.*;
  * @author thero
  */
 public class Shop {
-    
-    
+    static ArrayList<Customer> customers_list = new ArrayList<Customer>();
+    static int isDone = 1; //Has to be static to prevent further recursive calls in caterToCustomer
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
@@ -30,9 +30,9 @@ public class Shop {
                 System.out.println("Enter Customer ID: ");
                 String id = sc.next();
                 int cust_id = Customer.parseCustId(id);
-                if(cust_id >=0 && cust_id < Customer.customers_list.size())
+                if(cust_id >=0 && cust_id < shop.customers_list.size())
                 {
-                Customer customer = Customer.customers_list.get(cust_id);
+                Customer customer = shop.customers_list.get(cust_id);
                 System.out.println("1.Show Purchase History 2.Buy more items");
                 int cust_choice = sc.nextInt();
                 if(cust_choice == 1)
@@ -51,7 +51,7 @@ public class Shop {
             System.out.println("Enter your phone number: ");
             long phone_no = sc.nextLong();
             Customer customer = new Customer(name,phone_no);
-            Customer.customers_list.add(customer); //customers_list stores data of all the customers
+            shop.customers_list.add(customer); //customers_list stores data of all the customers
             shop.caterToCustomer(customer);
             }
             else
@@ -171,11 +171,12 @@ public class Shop {
             }while(in!=666);
             System.out.println("Estimated cost: ");
             customer.showBasket();
-            int isDone = 1;
+            //int isDone = 1;
             while(true)
             {
             System.out.println("1.Delete item from basket\n2.Add more items\n3.Checkout");
             isDone = sc.nextInt();
+            
             switch(isDone)
             {
                 case 1: customer.showBasket();
@@ -193,10 +194,13 @@ public class Shop {
                 break;
                     
             }
+            
             if(isDone == 3)
             {
+                
                 break;
             }
             }
+    
     }
 }
