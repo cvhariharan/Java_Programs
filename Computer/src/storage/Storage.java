@@ -10,8 +10,17 @@ package storage;
  * @author thero
  */
 public abstract class Storage {
-
+    
+    private Data d = new Data();
     protected abstract void persistentSave();
     protected abstract void capacity();
+    public void writeData(String data)
+    {
+        d.data = data;
+    }
     
+    public String readData()
+    {
+        return d.data;
+    }
 }

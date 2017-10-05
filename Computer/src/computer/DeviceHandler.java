@@ -13,18 +13,21 @@ public class DeviceHandler {
 
     public static void main(String[] args)
     {
-        String processor;
-        int ram;
-        String motherboard;
-        String device_name;
+        String processor = "";
+        int ram = 0;
+        String motherboard = "";
+        String device_name = "";
         String data;
         int device_type;
         Scanner in = new Scanner(System.in);
         System.out.println("Name: ");
         String name = in.next();
         User user = new User(name);
-        System.out.println("1.Add Device\n2.Access Device");
-        int choice = in.nextInt();
+        int choice = 0;
+        do
+        {
+        System.out.println("1.Add Device\n2.Access Device\n0.Exit");
+        choice = in.nextInt();
         if(choice == 1)
         {
             System.out.println("Name of the processor: ");
@@ -46,24 +49,28 @@ public class DeviceHandler {
                     case 1: 
                         Laptop laptop = new Laptop(processor,ram,motherboard,device_name);
                         laptop.device_type = --device_type;
+                        laptop.category = "Laptop";
                         user.addDevice(laptop);
                         break;
                         
                     case 2: 
                         Tablet tablet = new Tablet(processor,ram,motherboard,device_name);
                         tablet.device_type = --device_type;
+                        tablet.category = "Tablet";
                         user.addDevice(tablet);
                         break;
                      
                     case 3: 
                         Mobile mobile = new Mobile(processor,ram,motherboard,device_name);
                         mobile.device_type = --device_type;
+                        mobile.category = "Mobile";
                         user.addDevice(mobile);
                         break;
                         
                     case 4:
                         Desktop desktop = new Desktop(processor,ram,motherboard,device_name);
                         desktop.device_type = --device_type;
+                        desktop.category = "Desktop";
                         user.addDevice(desktop);
                         break;
                     default:
@@ -98,9 +105,17 @@ public class DeviceHandler {
 
                     default: System.out.println("Unknown Device!");
                     }
-                    
+                    System.out.println("1.Write Data\n2.Read Data");
+                    int action = in.nextInt();
+                    if(action == 1)
+                        device.writeData();
+                    else if(action == 2)
+                        device.readData();
+                    else
+                        System.out.println("Invalid selection!");
                 }
         }
+        }while(choice != 0);
     }
     
 }

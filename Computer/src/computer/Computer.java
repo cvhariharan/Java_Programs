@@ -20,6 +20,7 @@ public class Computer {
     private String motherboard;
     public String device_name;
     public int device_type; // 0-laptop,1-tablet,2-mobile,3-desktop
+    public String category;
     Internal internal = new Internal();
     External external = new External();
     Removable removable = new Removable();
@@ -37,6 +38,7 @@ public class Computer {
     
     public void printConfig()
     {
+        System.out.println("Device Type: "+this.category);
         System.out.println("Processor: "+this.processor);
         System.out.println("RAM: "+this.ram);
         System.out.println("Motherboard: "+this.motherboard);
@@ -50,13 +52,13 @@ public class Computer {
         switch(choice)
         {
             case 1:
-                System.out.println("Internal data: "+internal.d.data);
+                System.out.println("Internal data: "+internal.readData());
                 break;
             case 2:
-                System.out.println("External data: "+external.d.data);
+                System.out.println("External data: "+external.readData());
                 break;
             case 3:
-                System.out.println("Removable data: "+removable.d.data);
+                System.out.println("Removable data: "+removable.readData());
                 break;
         }
         System.out.println(internal.d.data);
@@ -69,22 +71,23 @@ public class Computer {
         int choice = in.nextInt();
         System.out.println("Input data: ");
         String data = in.next();
+        data = data + in.nextLine();
         switch(choice)
         {
             case 1:
-                internal.d.data = data;
+                internal.writeData(data);
                 System.out.println("Written to internal data.");
                 break;
             case 2:
-                external.d.data = data;
+                external.writeData(data);
                 System.out.println("Written to external data");
                 break;
             case 3:
-                removable.d.data = data;
+                removable.writeData(data);
                 System.out.println("Written to removable data");
                 break;
         }
-        System.out.println(internal.d.data);
+        System.out.println("Successfully written.");
     }
     
 }
