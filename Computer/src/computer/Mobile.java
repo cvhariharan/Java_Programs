@@ -22,7 +22,7 @@ public class Mobile extends Computer implements Charger{
         this.ram = ram;
         this.motherboard = motherboard;
         this.device_name = device_name;
-        internal.d.data = "Mobile internal";
+        internal.writeData("Mobile internal");
     }
     public void charge()
     {

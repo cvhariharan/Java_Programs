@@ -11,7 +11,7 @@ package storage;
  */
 public class Internal extends Storage{
     
-    public Data d = new Data();
+    private Data d = new Data();
     public void persistentSave()
     {
         

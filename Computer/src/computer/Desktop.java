@@ -21,7 +21,7 @@ public class Desktop extends Computer{
         this.ram = ram;
         this.motherboard = motherboard;
         this.device_name = device_name;
-        internal.d.data = "Desktop internal";
+        internal.writeData("Desktop internal");
     }
     
 }

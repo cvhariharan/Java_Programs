@@ -29,11 +29,11 @@ public class Computer {
         this.processor = processor;
         this.ram = ram;
         this.motherboard = motherboard;
-        internal.d.data = "Computer Internal";
+        internal.writeData("Tablet internal");
     }
     Computer()
     {
-        internal.d.data = "Computer Internal";
+        internal.writeData("Tablet internal");
     }
     
     public void printConfig()
@@ -61,7 +61,7 @@ public class Computer {
                 System.out.println("Removable data: "+removable.readData());
                 break;
         }
-        System.out.println(internal.d.data);
+        System.out.println(internal.readData());
     }
     
     public void writeData()

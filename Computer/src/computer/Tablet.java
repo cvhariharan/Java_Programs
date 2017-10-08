@@ -22,7 +22,7 @@ public class Tablet extends Computer implements Charger{
         this.ram = ram;
         this.motherboard = motherboard;
         this.device_name = device_name;
-        internal.d.data = "Tablet internal";
+        internal.writeData("Tablet internal");
     }
      public void charge()
     {
