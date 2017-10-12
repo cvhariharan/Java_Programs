@@ -38,9 +38,9 @@ public class DeviceHandler {
             motherboard = in.next();
             System.out.println("Device name: ");
             device_name = in.next();
-        }
         switch(choice)
         {
+            
             case 1: 
                 System.out.println("1.Laptop\n2.Tablet\n3.Mobile\n4.Desktop");
                 device_type= in.nextInt();
@@ -50,6 +50,7 @@ public class DeviceHandler {
                         Laptop laptop = new Laptop(processor,ram,motherboard,device_name);
                         laptop.device_type = --device_type;
                         laptop.category = "Laptop";
+                        laptop.charge();
                         user.addDevice(laptop);
                         break;
                         
@@ -57,6 +58,7 @@ public class DeviceHandler {
                         Tablet tablet = new Tablet(processor,ram,motherboard,device_name);
                         tablet.device_type = --device_type;
                         tablet.category = "Tablet";
+                        tablet.charge();
                         user.addDevice(tablet);
                         break;
                      
@@ -64,6 +66,7 @@ public class DeviceHandler {
                         Mobile mobile = new Mobile(processor,ram,motherboard,device_name);
                         mobile.device_type = --device_type;
                         mobile.category = "Mobile";
+                        mobile.charge();
                         user.addDevice(mobile);
                         break;
                         
@@ -114,6 +117,7 @@ public class DeviceHandler {
                     else
                         System.out.println("Invalid selection!");
                 }
+        }
         }
         }while(choice != 0);
     }

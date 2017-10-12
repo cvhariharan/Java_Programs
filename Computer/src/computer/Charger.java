@@ -11,7 +11,8 @@ package computer;
  */
 public interface Charger {
     
-    final static int battery_percent = 85;
-    void charge();
+    
+   void charge();
+    
     
 }

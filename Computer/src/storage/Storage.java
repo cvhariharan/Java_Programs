@@ -16,11 +16,11 @@ public abstract class Storage {
     protected abstract void capacity();
     public void writeData(String data)
     {
-        d.data = data;
+        d.dataSet(data);
     }
     
     public String readData()
     {
-        return d.data;
+        return d.dataGet();
     }
 }

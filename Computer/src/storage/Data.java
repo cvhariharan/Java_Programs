@@ -11,7 +11,7 @@ package storage;
  */
 public class Data {
     
-    public String data = "Some data";
+    private String data = "Some data";
     
     Data(String d)
     {
@@ -21,5 +21,13 @@ public class Data {
     {
         
     }
+    public void dataSet(String d)
+    {
+        data = d;
     
+    }
+    public String dataGet()
+    {
+        return data;
+    }
 }

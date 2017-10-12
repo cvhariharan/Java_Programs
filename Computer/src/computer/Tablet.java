@@ -5,6 +5,8 @@
  */
 package computer;
 
+import java.util.Scanner;
+
 /**
  *
  * @author thero
@@ -14,6 +16,7 @@ public class Tablet extends Computer implements Charger{
     private String processor;
     private int ram;
     private String motherboard;
+    boolean charging = false;
     
     Tablet(String processor, int ram, String motherboard,String device_name)
     {
@@ -24,8 +27,16 @@ public class Tablet extends Computer implements Charger{
         this.device_name = device_name;
         internal.writeData("Tablet internal");
     }
-     public void charge()
+   public void charge()
     {
-        System.out.println("Batter Capacity: "+battery_percent+" Charging");
+        Scanner in = new Scanner(System.in);
+        System.out.println("Is the device charging?Y/N: ");
+        String c = in.next().toLowerCase();
+        if(c.equals("y"))
+            {
+                this.charging = true;
+                System.out.println("Charging...");
+                System.out.println(this.charging);
+            }
     }
 }
