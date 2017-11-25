@@ -1,0 +1,66 @@
+{"Places":[
+			{
+			"name":"Delhi",
+			"id":0,
+			"dist":0,
+			"next":"Palwal,Noida",
+			"attractions":"India Gate, Parliament, Rashtrapati Bhavan"
+			},
+			{
+			"name":"Palwal",
+			"id":1,
+			"dist":15,
+			"next":"Faridabad",
+			"attractions":"Gandhi Ashram, Sarai Gate"
+			},
+			{
+			"name":"Faridabad",
+			"id":2,
+			"dist":45,
+			"next":"Mathura",
+			"attractions":"SurajKund, Raja Nahar Singh Palace"
+			},
+			{
+			"name":"Mathura",
+			"id":3,
+			"dist":60,
+			"next":"Agra",
+			"attractions":"Sri Krishna Janmabhoomi, Museum"
+			},
+			{
+			"name":"Agra",
+			"id":4,
+			"dist":45,
+			"next":"",
+			"attractions":"Taj Mahal, Agra fort"
+			},
+			{
+			"name":"Noida",
+			"id":5,
+			"dist"40,
+			"next":"Greater Noida",
+			"attractions":"DLF Mall of India, World of Wonder"
+			},
+			{
+			"name":"Greater Noida",
+			"id":6,
+			"dist":60,
+			"next":"Yamuna Express Way, Dadri",
+			"attractions":"Buddha International Circuit, City Park"
+			},
+			{
+			"name":"Yamuna Express Way",
+			"id":7,
+			"dist":75,
+			"next":"Agra",
+			"attractions":"Petrol Stations"
+			}
+			{
+			"name":"Dadri",
+			"id":8,
+			"dist":80,
+			"next":"Yamuna Express Way",
+			"attractions":"Petrol Stations"
+			}
+			]
+}
