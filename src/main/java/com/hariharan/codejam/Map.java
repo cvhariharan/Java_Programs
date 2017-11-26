@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package com.hariharan.codejam;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
@@ -26,6 +28,10 @@ public class Map {
     public static HashMap<String, Place> placeObjs;
     JFrame f;
     static JButton[] nodes;
+    public int sourceId = 0;
+    public int destId = 4;
+    public String source;
+    public String destination;
     Map()
     {
         
@@ -38,12 +44,16 @@ public class Map {
             FileReader in = new FileReader("places.json");
             JSONObject json = (JSONObject)parser.parse(in);
             JSONArray places = (JSONArray)json.get("Places");
-            
             for(Object e: places)
             {
                 JSONObject temp = (JSONObject)e;
                 String name = (String)temp.get("name");
                 long id = (long)temp.get("id");
+                String type = (String)temp.get("type");
+                if(type.equals("s"))
+                    source = name;
+                else if(type.equals("d"))
+                    destination = name;
                 long dist = (long)temp.get("dist");
                 String nextPlace = (String)temp.get("next");
                 String attractions = (String)temp.get("attractions");
@@ -73,14 +83,14 @@ public class Map {
         {
             System.out.println(e.getMessage());
         }
-       
+            System.out.println("Source: "+source+" Destionation: "+destination);
             f=new JFrame("Map");  
         /*JButton b=new JButton("Click Here");  
         b.setBounds(50,100,95,30);  */
         //f.add(b);  
             nodes = new JButton[allPlaces.size()];
             drawButtons();
-            f.setSize(900,400);  
+            f.setSize(1000,600);  
             f.setLayout(null);  
             f.setVisible(true); 
         
@@ -89,7 +99,7 @@ public class Map {
     public void drawButtons()
     {
         Random rand = new Random();
-        buttonAction ba = new buttonAction(this);
+        buttonAction ba = new buttonAction(this,this.destination);
         int i = 0;
         JButton addNode = new JButton("Add Node");
         addNode.setActionCommand("Node");
@@ -98,14 +108,15 @@ public class Map {
         f.add(addNode);
         for(Place place: allPlaces)
         {
-            int posY = rand.nextInt(200)+10;
+            
+            int posY = rand.nextInt(500)+10;
             int id = (int)place.id;
             nodes[id] = new JButton(place.name);
             int posX = (int)(150+i*120);
             nodes[id].setLocation(posX,posY);
             nodes[id].setSize(90,50);
             nodes[id].setActionCommand(place.name);
-            if(id != 0)
+            if(!(place.name).equals(source))
                 nodes[id].setEnabled(false);
             nodes[id].addActionListener(ba);
             f.add(nodes[id]);
@@ -127,9 +138,11 @@ public class Map {
 class buttonAction implements ActionListener
 {
     Map main;
-    public buttonAction(Map t)
+    String dest;
+    public buttonAction(Map t,String dest)
     {
         this.main = t;
+        this.dest = dest;
     }
 
     @Override
@@ -142,12 +155,23 @@ class buttonAction implements ActionListener
             
             System.out.println("New node");
             //main.getFrame().setVisible(false);
-            new AddNode().setVisible(true);
+            
+            AddNode node = new AddNode();
+            node.setMain(this.main);
+            node.setVisible(true);
+            
             
         }
         else
         {
             Place place = Map.placeObjs.get(name);
+            if((place.name.trim()).equals(this.dest.trim()))
+            {
+                Attractions d = new Attractions("Destination Reached: "+place.name,place.attractions);
+            }
+            else
+            {
+            Attractions atr = new Attractions(place.name,place.attractions);
             int places = Map.placeObjs.size()-1;
             String[] next = place.next;
             if(next.length > 0)
@@ -157,12 +181,15 @@ class buttonAction implements ActionListener
                     Place p = Map.placeObjs.get(s);
                     int id = (int)p.id;
                     Map.nodes[id].setEnabled(true);
-                    System.out.println(p.attractions);
+                    //System.out.println(p.attractions);
+                    
                     if(p.name.equals("Agra"))
                         System.out.println("Destination reached!");
                 }
             }
         }
+        }
+        
     }
     
 }

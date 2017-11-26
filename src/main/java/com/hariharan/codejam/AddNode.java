@@ -20,10 +20,15 @@ public class AddNode extends javax.swing.JFrame {
     /**
      * Creates new form AddNode
      */
+    private Map main;
     public AddNode() {
         initComponents();
+        
     }
-
+    public void setMain(Map main)
+    {
+        this.main = main;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -210,6 +215,8 @@ public class AddNode extends javax.swing.JFrame {
         System.out.println(json.toJSONString());
         json.writeJSONString(out);
         out.close();
+        this.main.getFrame().dispose();
+        Map g = new Map();
         }
         catch(ParseException e)
         {
