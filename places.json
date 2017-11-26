@@ -45,7 +45,7 @@
 			"name":"Greater Noida",
 			"id":6,
 			"dist":60,
-			"next":"Yamuna Express Way, Dadri",
+			"next":"Yamuna Express Way,Dadri",
 			"attractions":"Buddha International Circuit, City Park"
 			},
 			{
@@ -59,7 +59,7 @@
 			"name":"Dadri",
 			"id":8,
 			"dist":80,
-			"next":"Yamuna Express Way",
+			"next":"Mathura",
 			"attractions":"Petrol Stations"
 			}
 			]

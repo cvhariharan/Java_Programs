@@ -73,29 +73,35 @@ public class Map {
         {
             System.out.println(e.getMessage());
         }
-        f=new JFrame("Button Example");  
-    /*JButton b=new JButton("Click Here");  
-    b.setBounds(50,100,95,30);  */
-    //f.add(b);  
-        nodes = new JButton[allPlaces.size()];
-        drawButtons();
-        f.setSize(900,400);  
-        f.setLayout(null);  
-        f.setVisible(true); 
+       
+            f=new JFrame("Map");  
+        /*JButton b=new JButton("Click Here");  
+        b.setBounds(50,100,95,30);  */
+        //f.add(b);  
+            nodes = new JButton[allPlaces.size()];
+            drawButtons();
+            f.setSize(900,400);  
+            f.setLayout(null);  
+            f.setVisible(true); 
         
     }
     
     public void drawButtons()
     {
         Random rand = new Random();
-        buttonAction ba = new buttonAction();
+        buttonAction ba = new buttonAction(this);
         int i = 0;
+        JButton addNode = new JButton("Add Node");
+        addNode.setActionCommand("Node");
+        addNode.setBounds(10,10,90,40);
+        addNode.addActionListener(ba);
+        f.add(addNode);
         for(Place place: allPlaces)
         {
             int posY = rand.nextInt(200)+10;
             int id = (int)place.id;
             nodes[id] = new JButton(place.name);
-            int posX = (int)(100+i*120);
+            int posX = (int)(150+i*120);
             nodes[id].setLocation(posX,posY);
             nodes[id].setSize(90,50);
             nodes[id].setActionCommand(place.name);
@@ -106,35 +112,57 @@ public class Map {
             i++;
         }
     }
+    
+    public JFrame getFrame()
+    {
+        return f;
+    }
     public static void main(String[] args)
     {
         Map g = new Map();
+        
     }
 }
 
 class buttonAction implements ActionListener
 {
+    Map main;
+    public buttonAction(Map t)
+    {
+        this.main = t;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        String name = e.getActionCommand();
-        Place place = Map.placeObjs.get(name);
-        int places = Map.placeObjs.size()-1;
-        String[] next = place.next;
-        if(next.length > 0)
-        {
-        for(String s: next)
-        {
-            Place p = Map.placeObjs.get(s);
-            int id = (int)p.id;
-            Map.nodes[id].setEnabled(true);
-            System.out.println(p.attractions);
-            if(p.name.equals("Agra"))
-                System.out.println("Destination reached!");
-        }
-        }
         
+        String name = e.getActionCommand();
+        if(name.equals("Node"))
+        {
+            
+            System.out.println("New node");
+            //main.getFrame().setVisible(false);
+            new AddNode().setVisible(true);
+            
+        }
+        else
+        {
+            Place place = Map.placeObjs.get(name);
+            int places = Map.placeObjs.size()-1;
+            String[] next = place.next;
+            if(next.length > 0)
+            {
+                for(String s: next)
+                {
+                    Place p = Map.placeObjs.get(s);
+                    int id = (int)p.id;
+                    Map.nodes[id].setEnabled(true);
+                    System.out.println(p.attractions);
+                    if(p.name.equals("Agra"))
+                        System.out.println("Destination reached!");
+                }
+            }
+        }
     }
     
 }
